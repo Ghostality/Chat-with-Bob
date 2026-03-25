@@ -8,6 +8,9 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 10000; // Render uses 10000 by default
 
+// Trust proxy for Render deployment (required for rate limiting behind proxy)
+app.set('trust proxy', 1);
+
 // Middleware
 app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ extended: true, limit: '1mb' }));

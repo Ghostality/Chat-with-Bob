@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bob is Evaluating You</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="evaluation-page">
+            <div class="evaluation-content">
+                <h1>Bob is evaluating you...</h1>
+                <p class="evaluation-text">Please wait while Bob reviews your performance.</p>
+                <div class="evaluation-dots">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Auto-redirect to success page after 3 seconds
+        setTimeout(() => {
+            window.location.href = '/success';
+        }, 3000);
+    </script>
+</body>
+</html>

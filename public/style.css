@@ -1,0 +1,553 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #0a0a0a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #ffffff;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    background: #111111;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border: 1px solid #222222;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+/* Fix for introduction page - allow scrolling */
+.container:has(.introduction-page) {
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.container:has(.introduction-page) {
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+#chat-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: #0a0a0a;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message.user-message {
+    align-items: flex-end;
+    margin-left: auto;
+}
+
+.message.bot-message {
+    align-items: flex-start;
+}
+
+.message.user-message,
+.message.bot-message {
+    max-width: 70%;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.message.user-message {
+    background: #ffffff;
+    color: #000000;
+    border-bottom-right-radius: 4px;
+}
+
+.message.bot-message {
+    background: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #333333;
+    border-bottom-left-radius: 4px;
+}
+
+.message.system-message {
+    align-items: center;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #1a3a1a;
+    color: #4ade80;
+    border: 1px solid #22543d;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-align: center;
+}
+
+.message-sender {
+    font-size: 0.75em;
+    color: #666666;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+#chat-form {
+    padding: 20px;
+    background: #111111;
+    border-top: 1px solid #222222;
+    display: flex;
+    gap: 12px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s, background 0.3s;
+    background: #0a0a0a;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+#user-input:focus {
+    border-color: #ffffff;
+    background: #111111;
+}
+
+#user-input::placeholder {
+    color: #666666;
+}
+
+button {
+    padding: 16px 32px;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    background: #f0f0f0;
+}
+
+button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#step-hint {
+    padding: 15px 20px;
+    background: #1a1a1a;
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85em;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+#step-hint::before {
+    content: 'Step:';
+    white-space: nowrap;
+}
+
+/* Typing indicator */
+.typing-indicator {
+    display: none;
+    gap: 6px;
+    padding: 14px 20px;
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    width: fit-content;
+    margin-bottom: 15px;
+}
+
+.typing-indicator.user-typing {
+    margin-left: auto;
+    background: #ffffff;
+    border: 1px solid #333333;
+}
+
+.typing-indicator.user-typing .typing-dot {
+    background: #000000;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background: #666666;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0);
+    }
+    40% {
+        transform: scale(1);
+    }
+}
+
+.captcha-success {
+    text-align: center;
+    padding: 80px 20px;
+    background: #000000;
+    color: #ffffff;
+}
+
+.captcha-success h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.captcha-success p {
+    font-size: 1.2em;
+    opacity: 0.7;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.button {
+    display: inline-block;
+    padding: 18px 48px;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    font-family: 'Space Grotesk', sans-serif;
+    text-decoration: none;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
+    background: #f0f0f0;
+}
+
+/* Scrollbar styling */
+#chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-box::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+
+#chat-box::-webkit-scrollbar-thumb {
+    background-color: #333333;
+    border-radius: 3px;
+}
+
+#chat-box::-webkit-scrollbar-thumb:hover {
+    background-color: #444444;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .message-content {
+        max-width: 85%;
+    }
+}
+
+/* Evaluation page */
+.evaluation-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 40px 20px;
+}
+
+.evaluation-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.evaluation-icon {
+    font-size: 4em;
+    margin-bottom: 30px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.evaluation-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.evaluation-text {
+    font-size: 1.2em;
+    opacity: 0.7;
+    font-weight: 300;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.evaluation-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.evaluation-dots .dot {
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.evaluation-dots .dot:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.evaluation-dots .dot:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.evaluation-dots .dot:nth-child(3) {
+    animation-delay: 0s;
+}
+
+/* Failure page */
+.failure-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 40px 20px;
+}
+
+.failure-content {
+    text-align: center;
+    max-width: 500px;
+}
+
+.failure-icon {
+    font-size: 4em;
+    margin-bottom: 30px;
+    animation: shake 0.5s infinite;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+.failure-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: #ff4444;
+}
+
+.failure-text {
+    font-size: 1.2em;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.failure-subtext {
+    font-size: 1em;
+    opacity: 0.7;
+    font-weight: 300;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.retry-button {
+    display: inline-block;
+    padding: 18px 48px;
+    background: #ff4444;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    font-family: 'Space Grotesk', sans-serif;
+    text-decoration: none;
+}
+
+.retry-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 68, 68, 0.3);
+    background: #ff6666;
+}
+
+/* Introduction page */
+.introduction-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    overflow-y: auto;
+}
+
+.introduction-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.introduction-icon {
+    font-size: 4em;
+    margin-bottom: 30px;
+    animation: pulse 2s infinite;
+}
+
+.introduction-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.introduction-text {
+    font-size: 1.2em;
+    opacity: 0.9;
+    font-weight: 300;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.introduction-rules,
+.introduction-tips {
+    text-align: left;
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.introduction-rules h2,
+.introduction-tips h2 {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.introduction-rules ul,
+.introduction-tips ul {
+    list-style: none;
+    padding: 0;
+}
+
+.introduction-rules li,
+.introduction-tips li {
+    padding: 10px 0;
+    border-bottom: 1px solid #222222;
+    font-size: 1em;
+    line-height: 1.5;
+    color: #cccccc;
+}
+
+.introduction-rules li:last-child,
+.introduction-tips li:last-child {
+    border-bottom: none;
+}
+
+.introduction-rules li strong,
+.introduction-tips li strong {
+    color: #ffffff;
+}
+
+.introduction-warning {
+    background: #2a1a1a;
+    border: 1px solid #442222;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.introduction-warning p {
+    font-size: 1em;
+    color: #ff8888;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.introduction-warning strong {
+    color: #ffaaaa;
+}

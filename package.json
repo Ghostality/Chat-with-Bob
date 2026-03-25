@@ -1,0 +1,21 @@
+{
+  "name": "captcha-chat-with-bob",
+  "version": "1.0.0",
+  "description": "An interactive CAPTCHA system where users must converse with an AI character named Bob to pass verification.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

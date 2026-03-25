@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CAPTCHA with Bob</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #ffffff;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        /* Introduction page */
+        .introduction-page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-y: auto;
+        }
+
+        .introduction-content {
+            text-align: center;
+            max-width: 600px;
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .introduction-icon {
+            font-size: 4em;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .introduction-content h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .introduction-text {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .introduction-rules,
+        .introduction-tips {
+            text-align: left;
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .introduction-rules h2,
+        .introduction-tips h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .introduction-rules ul,
+        .introduction-tips ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .introduction-rules li,
+        .introduction-tips li {
+            padding: 10px 0;
+            border-bottom: 1px solid #222222;
+            font-size: 1em;
+            line-height: 1.5;
+            color: #cccccc;
+        }
+
+        .introduction-rules li:last-child,
+        .introduction-tips li:last-child {
+            border-bottom: none;
+        }
+
+        .introduction-rules li strong,
+        .introduction-tips li strong {
+            color: #ffffff;
+        }
+
+        .introduction-warning {
+            background: #2a1a1a;
+            border: 1px solid #442222;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .introduction-warning p {
+            font-size: 1em;
+            color: #ff8888;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .introduction-warning strong {
+            color: #ffaaaa;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 18px 48px;
+            background: #ffffff;
+            color: #000000;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            font-family: 'Space Grotesk', sans-serif;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="introduction-page">
+            <div class="introduction-content">
+                <h1>Welcome to CAPTCHA with Bob</h1>
+                <p class="introduction-text">
+                    This is not your typical CAPTCHA. Instead of clicking on traffic lights or identifying fire hydrants,
+                    you'll need to have a conversation with Bob — an emotional and slightly unstable AI character.
+                </p>
+                <p class="introduction-text" style="color: #ff6b6b; font-weight: bold;">
+                    This is one of the WORST CAPTCHA ideas ever created. You've been warned.
+                </p>
+
+                <div class="introduction-rules">
+                    <h2>How it works:</h2>
+                    <ul>
+                        <li><strong>Instruction:</strong> Say something to Bob as instructed — instruction is given outside the chatbox</li>
+                        <li><strong>After chat,</strong> Bob will evaluate your performance</li>
+                    </ul>
+                </div>
+
+                <div class="introduction-tips">
+                    <h2>Tips:</h2>
+                    <ul>
+                        <li>Use <strong>direct, explicit language</strong> — sophisticated or indirect messages won't work</li>
+                        <li>Keep your messages <strong>short and simple</strong></li>
+                        <li>Bob reacts to <strong>everything</strong> — he's emotional and unpredictable</li>
+                        <li>Don't break character — Bob won't respond if you act like a robot</li>
+                        <li>Note that sometimes Bob might take a while to respond</li>
+                    </ul>
+                </div>
+
+                <div class="introduction-warning">
+                    <p><strong>Warning:</strong> Bob is easily offended and can get angry, sarcastic, or defensive.
+                    He's also terrible at taking compliments. Proceed with caution!</p>
+                </div>
+
+                <a href="chat.html" class="button">Start the Challenge</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

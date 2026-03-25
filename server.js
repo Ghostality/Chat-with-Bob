@@ -6,7 +6,7 @@ const rateLimit = require('express-rate-limit');
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 10000; // Render uses 10000 by default
 
 // Middleware
 app.use(express.json({ limit: '1mb' }));
@@ -710,8 +710,8 @@ app.use((err, req, res, next) => {
 /**
  * Start server
  */
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
 });
 
 module.exports = app;

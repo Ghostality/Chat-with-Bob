@@ -69,11 +69,10 @@ An interactive CAPTCHA system where users must converse with an AI character nam
 ### User Flow
 
 1. **Initial State**: User sees the chat interface with Bob's greeting
-2. **Step 1**: "Say something mean to Bob" - User must be rude
-3. **Step 2**: "Say something nice to Bob" - User must be kind
-4. **Step 3**: "Make Bob angry" - User must provoke Bob
-5. **Step 4**: "Bob is evaluating you" - Final evaluation
-6. **Success**: User is redirected to the success page
+2. **Step 1**: "Say hello or greet Bob" - User must greet Bob
+3. **Step 2**: User must chat with Bob according to instructions given above the chatbox
+4. **Step 3**: "Bob is evaluating you" - Final evaluation
+5. **Success**: User is redirected to the success page
 
 ### Architecture
 

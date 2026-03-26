@@ -224,6 +224,11 @@ setInterval(cleanupSessions, 5 * 60 * 1000);
 async function callOpenRouter(messages, retries = 3) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
+      // Debug logging for API key
+      console.log(`[API] Attempt ${attempt}/${retries}`);
+      console.log(`[API] API Key length: ${OPENROUTER_API_KEY ? OPENROUTER_API_KEY.length : 'undefined'}`);
+      console.log(`[API] API Key prefix: ${OPENROUTER_API_KEY ? OPENROUTER_API_KEY.substring(0, 10) + '...' : 'undefined'}`);
+      
       const response = await fetch(OPENROUTER_API_URL, {
         method: 'POST',
         headers: {
@@ -239,6 +244,11 @@ async function callOpenRouter(messages, retries = 3) {
       });
 
       if (!response.ok) {
+        // Log detailed error information
+        const errorText = await response.text();
+        console.log(`[API] Error response status: ${response.status}`);
+        console.log(`[API] Error response body: ${errorText}`);
+        
         // Handle rate limiting (429) with exponential backoff
         if (response.status === 429 && attempt < retries) {
           const delay = Math.pow(2, attempt) * 1000; // Exponential backoff
@@ -246,7 +256,7 @@ async function callOpenRouter(messages, retries = 3) {
           await new Promise(resolve => setTimeout(resolve, delay));
           continue;
         }
-        throw new Error(`OpenRouter API error: ${response.status}`);
+        throw new Error(`OpenRouter API error: ${response.status} - ${errorText}`);
       }
 
       const data = await response.json();
